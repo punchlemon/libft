@@ -49,10 +49,45 @@ int	count_words(char *str, char *sep)
 
 int	store_str(char *str, char *sep)
 {
-	static int	i;
-	while (check_charset(str[i], sep))
+	static int	d;
+	int			i;
+	int			char_count;
+	int			flag;
+	char		*result;
+
+	flag = 0;
+	char_count = 0;
+	i = 0;
+	while (str[i])
 	{
-		
+		if (check_charset(str[i], sep))
+			if (flag == 1)
+				break ;
+		else
+		{
+			flag = 1;
+			char_count++;
+		}
+	}
+	i = 0;
+	result = (char *)malloc(sizeof(char) * char_count + 1);
+	if (result != NULL)
+	{
+		while (str[i])
+		{
+			if (check_charset(str[i], sep))
+				if (flag == 1)
+					break ;
+			else
+			{
+				if (flag == 0)
+				{
+					flag = 1;
+					str[i] = i;
+				}
+			}
+			i++;
+		}
 	}
 }
 
