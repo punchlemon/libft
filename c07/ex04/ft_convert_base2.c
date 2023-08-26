@@ -6,11 +6,9 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:02:29 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/26 13:33:54 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:51:05 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 int	check_base(char *str)
 {
@@ -44,20 +42,36 @@ int	convert_num(char c, char *base, int len)
 	return (len);
 }
 
-int	check_result_len(int num, char *base, int len)
+int	check_digit(int num, int len)
 {
-	static int	result_len
+	static int	result_len;
+
+	result_len++;
+	if (num < 0)
+		result_len++;
+	if (num / len)
+		return (check_digit(num / len, len));
+	else
+		return (result_len);
 }
 
-void	store_result(int num, char *base, int len, int result_len)
+void	store_result(int num, char *base, int result_len, char *result)
 {
-	if (nbr < 0)
-	{
-		write(1, "-", 1);
-		nbr = -nbr;
-	}
+	static int	digit;
+	int			now;
 
-	if (nbr / len)
-		rc_print_nbr(nbr / len, base, len);
-	write(1, &base[nbr % len], 1);
+	if (digit == 0)
+	{
+		result[result_len] = '\0';
+		if (num < 0)
+		{
+			result[0] = '-';
+			num = -num;
+			digit++;
+		}
+	}
+	now = digit++;
+	if (num / result_len)
+		store_result(num / result_len, base, result_len, result);
+	result[now] = base[num % result_len];
 }

@@ -6,17 +6,16 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:02:07 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/26 13:32:04 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:50:35 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
 int		check_base(char *str);
 int		convert_num(char c, char *base, int len);
-int		check_result_len(int num, char *base, int len);
-void	rc_print_nbr(long long nbr, char *base, int len);
-void	print_nbr(long long nbr, char *base, int len);
+int		check_digit(int num, int len);
+void	store_result(int num, char *base, int result_len, char *result);
 
 int	ft_atoi_base(char *str, char *base)
 {
@@ -52,12 +51,14 @@ char	*ft_storenum_base(int num, char *base)
 	int		result_len;
 	char	*result;
 
+	result = NULL;
 	len = check_base(base);
 	if (len)
 	{
-		result_len = check_result_len(num, base, len);
-		result = (char *)malloc(sizeof(char) * result_len);
-		store_result(num, base, len, result_len);
+		result_len = check_digit(num, len);
+		result = (char *)malloc(sizeof(char) * (result_len + 1));
+		if (result != NULL)
+			store_result(num, base, len, result);
 	}
 	return (result);
 }
@@ -67,9 +68,10 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	int		num;
 
 	num = ft_atoi_base(nbr, base_from);
-	return (ft_putnbr_base(num, base_to));
+	return (ft_storenum_base(num, base_to));
 }
 
+#include <stdio.h>
 int main() {
-	ft_convert_base("64", "0123456789", "01");
+	printf("%s\n", ft_convert_base("   ---255", "0123456789", "0123456789abcdef"));
 }
