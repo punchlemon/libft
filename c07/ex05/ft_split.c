@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 16:21:58 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/26 10:36:45 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/26 18:13:37 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,40 @@ int	ft_strlen(char *str)
 	while (str[i] != 0)
 		i++;
 	return (i);
+}
+
+int	count_words(char *str, char *sep)
+{
+	int	i;
+	int	word_count;
+	int	flag;
+
+	flag = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (check_charset(str[i], sep))
+			flag = 0;
+		else
+		{
+			if (flag == 0)
+			{
+				flag = 1;
+				word_count++;
+			}
+		}
+		i++;
+	}
+	return (word_count);
+}
+
+int	store_str(char *str, char *sep)
+{
+	static int	i;
+	while (check_charset(str[i], sep))
+	{
+		
+	}
 }
 
 int	check_charset(char c, char *charset)
@@ -37,11 +71,20 @@ int	check_charset(char c, char *charset)
 
 char	**ft_split(char *str, char *charset)
 {
-	int		i;
+	int		str_len;
 	int		word_count;
+	char	**result;
+	int		i;
 
+	str_len = ft_strlen(str);
+	word_count = count_words(str, charset);
+	result = (char **)malloc(sizeof(char *) * word_count + 1);
+	result[word_count] = NULL;
 	i = 0;
-	while (i < str)
-		{
-		}
+	while (i < word_count)
+	{
+		result[i] = store_str(str, charset);
+		i++;
+	}
+
 }
