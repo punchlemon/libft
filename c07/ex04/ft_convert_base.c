@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:02:07 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/26 15:50:35 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/28 06:32:31 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	return (ft_storenum_base(num, base_to));
 }
 
-#include <stdio.h>
-int main() {
-	printf("%s\n", ft_convert_base("   ---255", "0123456789", "0123456789abcdef"));
-}
+// #include <stdio.h>
+// int main() {
+// 	char *s = ft_convert_base("  --255", "0123456789", "0123456789abcdef");
+// 	printf("%s\n", s);
+// }

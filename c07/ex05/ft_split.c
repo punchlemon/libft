@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 16:21:58 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/26 18:13:37 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/28 06:30:43 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,9 @@ char	**ft_split(char *str, char *charset)
 	return (result);
 }
 
-#include <stdio.h>
-int main(){
-	char **r = ft_split("hef;jei.af;f.ejaio;ejfae;gal", ",;");
-	for (int i = 0; r[i]; i++)
-		printf("%s\n", r[i]);
-}
+// #include <stdio.h>
+// int main(){
+// 	char **r = ft_split("hef;jei.af;f.ejaio;ejfae;gal", ".;");
+// 	for (int i = 0; r[i]; i++)
+// 		printf("%s\n", r[i]);
+// }
