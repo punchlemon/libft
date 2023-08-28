@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_point.h                                         :+:      :+:    :+:   */
+/*   ft_strs_to_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/28 07:16:15 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/28 12:38:20 by retanaka         ###   ########.fr       */
+/*   Created: 2023/08/28 12:41:30 by retanaka          #+#    #+#             */
+/*   Updated: 2023/08/28 13:33:20 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_POINT_H
-
-# define FT_POINT_H
-
-typedef struct s_point
+#include ""
+struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
-	int	x;
-	int	y;
-}	t_point;
-
-#endif
+	
+}

@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:02:07 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/28 11:54:52 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/28 17:34:25 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ int		check_base(char *str);
 int		convert_num(char c, char *base, int len);
 int		check_digit(int num, int len);
 void	store(int num, char *base, int len, char *result);
+
+int	str_len(char *str)
+{
+	*str;
+}
 
 int	ft_atoi_base(char *str, char *base)
 {
@@ -34,14 +39,9 @@ int	ft_atoi_base(char *str, char *base)
 		while (*str == '-' || *str == '+')
 			if (*str++ == '-')
 				num = -num;
-		while (convert_num(*str, base, len) != len)
-		{
-			check = convert_num(*str, base, len);
-			num = num * len + check;
-			str++;
-		}
+		convert_num(str, base, &num)
 	}
-	return (sign * num);
+	return (num);
 }
 
 char	*ft_storenum_base(int num, char *base)
@@ -72,7 +72,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 
 #include <stdio.h>
 int main() {
-	printf("%d", ft_atoi_base(" 23647", "0123456789"));
+	printf("%d", ft_atoi_base("   23647", "0123456789"));
 	// char *s = ft_convert_base(" 23647", "0123456789", "0123456789abcdef");
 	// printf("%s\n", s);
 }

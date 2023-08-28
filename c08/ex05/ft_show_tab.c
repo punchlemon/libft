@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_point.h                                         :+:      :+:    :+:   */
+/*   ft_show_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/28 07:16:15 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/28 12:38:20 by retanaka         ###   ########.fr       */
+/*   Created: 2023/08/28 12:41:59 by retanaka          #+#    #+#             */
+/*   Updated: 2023/08/28 13:57:33 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_POINT_H
-
-# define FT_POINT_H
-
-typedef struct s_point
+int	str_len(char *str)
 {
-	int	x;
-	int	y;
-}	t_point;
+	int	i;
 
-#endif
+	i = 0;
+	if (str)
+		while(str[i])
+			i++;
+	return (i);
+}
+
+

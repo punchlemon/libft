@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 19:34:10 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/25 07:19:01 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/28 14:57:50 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 int	*ft_range(int min, int max)
 {
-	int	*i;
-	int	*ret;
+	int			*i;
+	int			*ret;
+	long long	size;
 
+	size = (long long)max - (long long)min;
 	if (max <= min)
 		return (NULL);
-	i = (int *)malloc(sizeof(int) * (max - min));
+	i = (int *)malloc(sizeof(int) * size);
 	if (!i)
 		return (NULL);
 	ret = i;
@@ -30,8 +32,10 @@ int	*ft_range(int min, int max)
 
 // #include <stdio.h>
 // int main(){
-// 	int *pi = ft_range(0, 9);
-// 	for (int i = 0; i < 9; i++)
+// 	int min = -2147483648;
+// 	int max = 2147483647;
+// 	int *pi = ft_range(min, max);
+// 	for (int i = 0; pi[i] <= max; i++)
 // 		printf("%d", pi[i]);
 // 	free(pi);
 // }

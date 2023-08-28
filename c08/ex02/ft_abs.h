@@ -6,13 +6,14 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 07:12:12 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/28 07:14:47 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/28 13:39:18 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_ABS_H
 
 # define FT_ABS_H
+
 # define ABS(i) ((i) < 0 ? -(i) : (i))
 
 #endif

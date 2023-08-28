@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 16:21:58 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/28 12:30:56 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/28 15:54:37 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,16 @@ int	check_charset(char c, char *charset)
 {
 	int	i;
 
-	i = -1;
-	while (charset[++i])
-		if (c == charset[i])
-			return (1);
+	if (charset)
+	{
+		i = 0;
+		while (charset[i])
+		{
+			if (c == charset[i])
+				return (1);
+			i++;
+		}
+	}
 	return (0);
 }
 
@@ -110,7 +116,7 @@ char	**ft_split(char *str, char *charset)
 
 // #include <stdio.h>
 // int main(){
-// 	char **r = ft_split("hef;jei.af;f.ejaio;ejfae;gal", "");
+// 	char **r = ft_split(NULL, NULL);
 // 	for (int i = 0; r[i]; i++)
 // 		printf("%s\n", r[i]);
 // }

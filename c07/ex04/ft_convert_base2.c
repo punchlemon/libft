@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:02:29 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/28 11:42:25 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/28 17:34:33 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,25 @@ int	check_base(char *str)
 	return (i);
 }
 
-int	convert_num(char c, char *base, int len)
+int	is_in_base(char c, char *base)
 {
 	int	i;
 
 	i = 0;
-	while (i < len)
-		if (c == base[i++])
-			return (i - 1);
+	while (base[i])
+		if (base[i] == c)
+			return (i);
+	return (-1);
+}
+
+void	convert_num(char *str, char *base, int *num)
+{
+	int	i;
+
+	if (is_in_base(str[i], base) == -1)
+	{
+		
+	}
 	return (len);
 }
 
@@ -54,6 +65,7 @@ int	check_digit(int num, int len)
 	else
 		return (result_len);
 }
+
 
 void	store(int num, char *base, int len, char *result)
 {
