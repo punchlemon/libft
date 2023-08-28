@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:02:29 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/26 15:51:05 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:42:25 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,13 @@ int	check_digit(int num, int len)
 		return (result_len);
 }
 
-void	store_result(int num, char *base, int result_len, char *result)
+void	store(int num, char *base, int len, char *result)
 {
 	static int	digit;
 	int			now;
+	int			result_len;
 
+	result_len = check_digit(num, len);
 	if (digit == 0)
 	{
 		result[result_len] = '\0';
@@ -70,8 +72,8 @@ void	store_result(int num, char *base, int result_len, char *result)
 			digit++;
 		}
 	}
-	now = digit++;
-	if (num / result_len)
-		store_result(num / result_len, base, result_len, result);
-	result[now] = base[num % result_len];
+	now = result_len - digit++ - 1;
+	if (num / len)
+		store(num / len, base, len, result);
+	result[now] = base[num % len];
 }

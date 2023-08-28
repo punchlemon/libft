@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:02:07 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/28 06:32:31 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:54:52 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		check_base(char *str);
 int		convert_num(char c, char *base, int len);
 int		check_digit(int num, int len);
-void	store_result(int num, char *base, int result_len, char *result);
+void	store(int num, char *base, int len, char *result);
 
 int	ft_atoi_base(char *str, char *base)
 {
@@ -24,8 +24,7 @@ int	ft_atoi_base(char *str, char *base)
 	long long	num;
 	int			len;
 
-	sign = 1;
-	num = 0;
+	num = 1;
 	len = check_base(base);
 	if (len)
 	{
@@ -34,7 +33,7 @@ int	ft_atoi_base(char *str, char *base)
 			str++;
 		while (*str == '-' || *str == '+')
 			if (*str++ == '-')
-				sign = -sign;
+				num = -num;
 		while (convert_num(*str, base, len) != len)
 		{
 			check = convert_num(*str, base, len);
@@ -58,7 +57,7 @@ char	*ft_storenum_base(int num, char *base)
 		result_len = check_digit(num, len);
 		result = (char *)malloc(sizeof(char) * (result_len + 1));
 		if (result != NULL)
-			store_result(num, base, len, result);
+			store(num, base, len, result);
 	}
 	return (result);
 }
@@ -71,8 +70,9 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	return (ft_storenum_base(num, base_to));
 }
 
-// #include <stdio.h>
-// int main() {
-// 	char *s = ft_convert_base("  --255", "0123456789", "0123456789abcdef");
-// 	printf("%s\n", s);
-// }
+#include <stdio.h>
+int main() {
+	printf("%d", ft_atoi_base(" 23647", "0123456789"));
+	// char *s = ft_convert_base(" 23647", "0123456789", "0123456789abcdef");
+	// printf("%s\n", s);
+}

@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 16:21:58 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/28 06:30:43 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/28 12:30:56 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	make_str(char *str, char *sep, char **result)
 	i = 0;
 	while (result[i])
 	{
-		char_count = 0;
 		while (check_charset(str[d], sep))
 			d++;
-		while (!check_charset(str[d], sep))
+		char_count = 0;
+		while (!check_charset(str[d], sep) && str[d])
 		{
 			char_count++;
 			d++;
@@ -57,10 +57,10 @@ void	store_str(char *str, char *sep, char **result)
 	i = 0;
 	while (result[i])
 	{
-		char_count = 0;
 		while (check_charset(str[d], sep))
 			d++;
-		while (!check_charset(str[d], sep))
+		char_count = 0;
+		while (!check_charset(str[d], sep) && str[d])
 		{
 			result[i][char_count] = str[d];
 			char_count++;
@@ -110,7 +110,7 @@ char	**ft_split(char *str, char *charset)
 
 // #include <stdio.h>
 // int main(){
-// 	char **r = ft_split("hef;jei.af;f.ejaio;ejfae;gal", ".;");
+// 	char **r = ft_split("hef;jei.af;f.ejaio;ejfae;gal", "");
 // 	for (int i = 0; r[i]; i++)
 // 		printf("%s\n", r[i]);
 // }
