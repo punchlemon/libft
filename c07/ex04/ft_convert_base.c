@@ -11,68 +11,96 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 int		check_base(char *str);
-int		convert_num(char c, char *base, int len);
-int		check_digit(int num, int len);
-void	store(int num, char *base, int len, char *result);
+int		is_in_base(char c, char *base);
+//int		convert_atoi(char c, char *base, int base_len);
+int		check_digit(int output, int base_len, int *i);
+void	store(int output, char *base, int base_len, char *result);
 
-int	str_len(char *str)
+int	abs(int num)
 {
-	*str;
+	if (num < 0)
+		num = -num;
+	return (num);
 }
 
-int	ft_atoi_base(char *str, char *base)
+int	ft_atoi_base(char *str, char *base, int base_len)
 {
-	int			check;
-	int			sign;
-	long long	num;
-	int			len;
+	int	i;
+	int	n;
+	int	output;
 
-	num = 1;
-	len = check_base(base);
-	if (len)
+	output = 1;
+	if (base_len)
 	{
 		while (*str == '\t' || *str == '\n' || *str == '\v'
 			|| *str == '\f' || *str == '\r' || *str == ' ')
 			str++;
 		while (*str == '-' || *str == '+')
 			if (*str++ == '-')
-				num = -num;
-		convert_num(str, base, &num)
+				output = -output;
+		i = 0;
+		while (str[i] && is_in_base(str[i], base) != -1)
+		{
+			n = is_in_base(str[i], base);
+			if (i == 0)
+				output *= n;
+			else
+				output = output * base_len + n;
+			i++;
+		}
 	}
-	return (num);
+	return (output);
 }
 
-char	*ft_storenum_base(int num, char *base)
+char	*ft_itoa_base(int num, char *base, int base_len)
 {
-	int		len;
-	int		result_len;
-	char	*result;
+	char	*output;
+	int		i;
 
-	result = NULL;
-	len = check_base(base);
-	if (len)
+	output = NULL;
+	if (base_len)
 	{
-		result_len = check_digit(num, len);
-		result = (char *)malloc(sizeof(char) * (result_len + 1));
-		if (result != NULL)
-			store(num, base, len, result);
+		i = 0;
+		check_digit(num, base_len, &i);
+		output = (char *)malloc(sizeof(char) * (i + 1));
+		if (num < 0)
+			output[0] = '-';
+		if (output != NULL)
+			output[i] = '\0';
+		while (--i < 0)
+		{
+			printf("%d", num % base_len);
+			output[i] = base[abs(num % base_len)];
+			num /= base_len;
+		}
 	}
-	return (result);
+	return (output);
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
+	int		base_from_len;
+	int		base_to_len;
 	int		num;
+	char	*str;
 
-	num = ft_atoi_base(nbr, base_from);
-	return (ft_storenum_base(num, base_to));
+	str = NULL;
+	base_from_len = check_base(base_from);
+	base_to_len = check_base(base_to);
+	num = ft_atoi_base(nbr, base_from, base_from_len);
+	str = ft_itoa_base(num, base_to, base_to_len);
+	return (str);
 }
 
 #include <stdio.h>
 int main() {
-	printf("%d", ft_atoi_base("   23647", "0123456789"));
+	printf("%d", ft_atoi_base("   ----23647", "0123456789", 10));
+	ft_itoa_base(25, "0123456789abcdef", 16);
+	//printf("%s", ft_itoa_base(2147483647, "0123456789abcdef", 16));
+	printf("%d", -12 % 10);
 	// char *s = ft_convert_base(" 23647", "0123456789", "0123456789abcdef");
 	// printf("%s\n", s);
 }

@@ -10,23 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	check_base(char *str)
+int	check_base(char *base)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (str[i])
+	if (!base)
 	{
-		if (str[i] == '-' || str[i] == '+')
-			return (0);
-		j = 0;
-		while (j < i)
-			if (str[i] == str[j++])
+		while (base[i])
+		{
+			if (base[i] == '-' || base[i] == '+')
 				return (0);
-		i++;
+			j = 0;
+			while (j < i)
+				if (base[i] == base[j++])
+					return (0);
+			i++;
+		}
 	}
-	if (i == 1)
+	if (i < 2)
 		return (0);
 	return (i);
 }
@@ -35,57 +38,48 @@ int	is_in_base(char c, char *base)
 {
 	int	i;
 
-	i = 0;
-	while (base[i])
+	i = -1;
+	while (base[++i])
 		if (base[i] == c)
 			return (i);
 	return (-1);
 }
 
-void	convert_num(char *str, char *base, int *num)
+void	check_digit(int num, int base_len, int *i)
 {
-	int	i;
-
-	if (is_in_base(str[i], base) == -1)
+	(*i)++;
+	num /= base_len;
+	if (num)
 	{
-		
-	}
-	return (len);
-}
-
-int	check_digit(int num, int len)
-{
-	static int	result_len;
-
-	result_len++;
-	if (num < 0)
-		result_len++;
-	if (num / len)
-		return (check_digit(num / len, len));
-	else
-		return (result_len);
-}
-
-
-void	store(int num, char *base, int len, char *result)
-{
-	static int	digit;
-	int			now;
-	int			result_len;
-
-	result_len = check_digit(num, len);
-	if (digit == 0)
-	{
-		result[result_len] = '\0';
 		if (num < 0)
 		{
-			result[0] = '-';
+			(*i)++;
 			num = -num;
-			digit++;
 		}
+		check_digit(num, base_len, i);
 	}
-	now = result_len - digit++ - 1;
-	if (num / len)
-		store(num / len, base, len, result);
-	result[now] = base[num % len];
 }
+
+
+//void	store(int num, char *base, int base_len, char *result)
+//{
+//	static int	digit;
+//	int			now;
+//	int			result_len;
+
+//	result_len = check_digit(num, base_len);
+//	if (digit == 0)
+//	{
+//		result[result_len] = '\0';
+//		if (num < 0)
+//		{
+//			result[0] = '-';
+//			num = -num;
+//			digit++;
+//		}
+//	}
+//	now = result_len - digit++ - 1;
+//	if (num / base_len)
+//		store(num / base_len, base, base_len, result);
+//	result[now] = base[num % base_len];
+//}
