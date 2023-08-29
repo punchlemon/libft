@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:02:29 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/29 09:25:04 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/29 12:07:30 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,15 @@ void	calculate(int *num, char *str, char *base, int base_len)
 		{
 			if (i == 0)
 				*num *= j;
-			else if (*num < 0)
-				*num = (*num * base_len) - j;
 			else
-				*num = (*num * base_len) + j;
+				*num = (*num * base_len) + j * ((*num > 0) * 2 - 1);
 		}
 		else
+		{
+			if (i == 0)
+				*num = 0;
 			break ;
+		}
 		i++;
 	}
 }

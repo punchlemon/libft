@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 16:21:58 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/29 11:02:06 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:35:44 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_charset(char c, char *charset)
 	return (0);
 }
 
-void	make_str(char *str, char *sep, char **result)
+void	make_str(char *str, char *sep, char **output)
 {
 	int		i;
 	int		d;
@@ -37,7 +37,7 @@ void	make_str(char *str, char *sep, char **result)
 
 	d = 0;
 	i = 0;
-	while (result[i])
+	while (output[i])
 	{
 		while (check_charset(str[d], sep))
 			d++;
@@ -47,14 +47,14 @@ void	make_str(char *str, char *sep, char **result)
 			char_count++;
 			d++;
 		}
-		result[i] = (char *)malloc(sizeof(char) * (char_count + 1));
-		if (result[i] != NULL)
-			result[i][char_count] = '\0';
+		output[i] = (char *)malloc(sizeof(char) * (char_count + 1));
+		if (output[i] != NULL)
+			output[i][char_count] = '\0';
 		i++;
 	}
 }
 
-void	store_str(char *str, char *sep, char **result)
+void	store_str(char *str, char *sep, char **output)
 {
 	int		i;
 	int		d;
@@ -62,18 +62,18 @@ void	store_str(char *str, char *sep, char **result)
 
 	d = 0;
 	i = 0;
-	while (result[i])
+	while (output[i])
 	{
 		while (check_charset(str[d], sep))
 			d++;
 		char_count = 0;
 		while (!check_charset(str[d], sep) && str[d])
 		{
-			result[i][char_count] = str[d];
+			output[i][char_count] = str[d];
 			char_count++;
 			d++;
 		}
-		result[i][char_count] = '\0';
+		output[i][char_count] = '\0';
 		i++;
 	}
 }
@@ -83,7 +83,7 @@ char	**make_strs(char *str, char *sep)
 	int		i;
 	int		word_count;
 	int		flag;
-	char	**result;
+	char	**output;
 
 	word_count = 0;
 	flag = 0;
@@ -101,24 +101,24 @@ char	**make_strs(char *str, char *sep)
 			}
 		}
 	}
-	result = (char **)malloc(sizeof(char *) * (word_count + 1));
-	if (result != NULL)
-		result[word_count] = NULL;
-	return (result);
+	output = (char **)malloc(sizeof(char *) * (word_count + 1));
+	if (output != NULL)
+		output[word_count] = NULL;
+	return (output);
 }
 
 char	**ft_split(char *str, char *charset)
 {
-	char	**result;
+	char	**output;
 
-	result = NULL;
-	result = make_strs(str, charset);
-	if (result != NULL)
+	output = NULL;
+	output = make_strs(str, charset);
+	if (output != NULL)
 	{
-		make_str(str, charset, result);
-		store_str(str, charset, result);
+		make_str(str, charset, output);
+		store_str(str, charset, output);
 	}
-	return (result);
+	return (output);
 }
 
 // #include <stdio.h>
