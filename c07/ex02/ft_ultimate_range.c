@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 19:58:20 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/28 15:32:26 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/30 06:00:57 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ int	ft_ultimate_range(int **range, int min, int max)
 // 	int min = 0;
 // 	int max = 1;
 // 	int *p;
-// 	int **pp = &p;
-// 	printf("%d", ft_ultimate_range(pp, min, max));
+// 	printf("%d", ft_ultimate_range(&p, min, max));
 // 	// if(ft_ultimate_range(pp, min, max)> 0)
 // 		// for (int i = 0; p[i] <= max; i++)
 // 			// printf("%d", p[i]);

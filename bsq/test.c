@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 11:58:33 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/29 17:53:06 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/30 06:07:15 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,18 +116,22 @@ int	find_max_pos(t_input in, int **int_map)
 {
 	int		i;
 	int		j;
-	int		up;
-	int		lu;
-	int		lf;
+	t_pos	max;
 
-	i = in.col - 1;
-	while (0 < i)
+	max.x = 1;
+	max.y = 1;
+	max.num = 0;
+	i = 1;
+	while (i < in.col)
 	{
-		j = 0;
+		j = 1;
 		while (j < in.row)
 		{
-			if (int_map[i][j] != 0)
+			if (max.num < int_map[i][j])
 			{
+				max.x = j;
+				max.y = i;
+				max.num = int_map
 				up = int_map[i - 1][j];
 				lu = int_map[i - 1][j - 1];
 				lf = int_map[i][j - 1];
