@@ -6,9 +6,16 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:02:29 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/28 17:34:33 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/29 09:25:04 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+int	abs(int num)
+{
+	if (num < 0)
+		return (-num);
+	return (num);
+}
 
 int	check_base(char *base)
 {
@@ -16,7 +23,7 @@ int	check_base(char *base)
 	int	j;
 
 	i = 0;
-	if (!base)
+	if (base)
 	{
 		while (base[i])
 		{
@@ -34,15 +41,31 @@ int	check_base(char *base)
 	return (i);
 }
 
-int	is_in_base(char c, char *base)
+void	calculate(int *num, char *str, char *base, int base_len)
 {
 	int	i;
+	int	j;
 
-	i = -1;
-	while (base[++i])
-		if (base[i] == c)
-			return (i);
-	return (-1);
+	i = 0;
+	while (str[i])
+	{
+		j = -1;
+		while (base[++j])
+			if (base[j] == str[i])
+				break ;
+		if (j < base_len)
+		{
+			if (i == 0)
+				*num *= j;
+			else if (*num < 0)
+				*num = (*num * base_len) - j;
+			else
+				*num = (*num * base_len) + j;
+		}
+		else
+			break ;
+		i++;
+	}
 }
 
 void	check_digit(int num, int base_len, int *i)
@@ -60,26 +83,9 @@ void	check_digit(int num, int base_len, int *i)
 	}
 }
 
-
-//void	store(int num, char *base, int base_len, char *result)
-//{
-//	static int	digit;
-//	int			now;
-//	int			result_len;
-
-//	result_len = check_digit(num, base_len);
-//	if (digit == 0)
-//	{
-//		result[result_len] = '\0';
-//		if (num < 0)
-//		{
-//			result[0] = '-';
-//			num = -num;
-//			digit++;
-//		}
-//	}
-//	now = result_len - digit++ - 1;
-//	if (num / base_len)
-//		store(num / base_len, base, base_len, result);
-//	result[now] = base[num % base_len];
-//}
+void	zero_fill(char *array, int i)
+{
+	if (array)
+		while (i--)
+			*array++ = 0;
+}

@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 16:21:58 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/28 15:54:37 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:02:06 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	make_str(char *str, char *sep, char **result)
 			d++;
 		}
 		result[i] = (char *)malloc(sizeof(char) * (char_count + 1));
-		result[i][char_count] = '\0';
+		if (result[i] != NULL)
+			result[i][char_count] = '\0';
 		i++;
 	}
 }
@@ -86,21 +87,23 @@ char	**make_strs(char *str, char *sep)
 
 	word_count = 0;
 	flag = 0;
-	i = -1;
-	while (str[++i])
+	if (str)
 	{
-		if (check_charset(str[i], sep))
-			flag = 0;
-		else if (flag == 0)
+		i = -1;
+		while (str[++i])
 		{
-			flag = 1;
-			word_count++;
+			if (check_charset(str[i], sep))
+				flag = 0;
+			else if (flag == 0)
+			{
+				flag = 1;
+				word_count++;
+			}
 		}
 	}
 	result = (char **)malloc(sizeof(char *) * (word_count + 1));
-	if (result == NULL)
-		return (NULL);
-	result[word_count] = NULL;
+	if (result != NULL)
+		result[word_count] = NULL;
 	return (result);
 }
 
@@ -108,15 +111,25 @@ char	**ft_split(char *str, char *charset)
 {
 	char	**result;
 
+	result = NULL;
 	result = make_strs(str, charset);
-	make_str(str, charset, result);
-	store_str(str, charset, result);
+	if (result != NULL)
+	{
+		make_str(str, charset, result);
+		store_str(str, charset, result);
+	}
 	return (result);
 }
 
 // #include <stdio.h>
 // int main(){
-// 	char **r = ft_split(NULL, NULL);
-// 	for (int i = 0; r[i]; i++)
-// 		printf("%s\n", r[i]);
+// 	char **r = ft_split(NULL, "l");
+// 	int i = 0;
+// 	while (r[i])
+// 		printf("%s\n", r[i++]);
+// 	printf("%s\n", r[i]);
+// 	i = 0;
+// 	while (r[i])
+// 		free(r[i++]);
+// 	free(r);
 // }
