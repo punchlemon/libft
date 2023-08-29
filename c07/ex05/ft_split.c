@@ -6,11 +6,31 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 16:21:58 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/29 11:35:44 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/29 18:04:15 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+
+char	*str_dup(char *src)
+{
+	int		i;
+	int		len;
+	char	*copy_str;
+
+	i = 0;
+	while (src[i])
+		i++;
+	len = i + 1;
+	copy_str = (char *)malloc(sizeof(char) * len);
+	i = 0;
+	while (i < len)
+	{
+		copy_str[i] = src[i];
+		i++;
+	}
+	return (copy_str);
+}
 
 int	check_charset(char c, char *charset)
 {
@@ -34,58 +54,36 @@ void	make_str(char *str, char *sep, char **output)
 	int		i;
 	int		d;
 	int		char_count;
+	char	*temp;
 
 	d = 0;
-	i = 0;
-	while (output[i])
+	while (check_charset(str[d], sep))
+		d++;
+	char_count = 0;
+	while (!check_charset(str[d], sep) && str[d])
 	{
-		while (check_charset(str[d], sep))
-			d++;
-		char_count = 0;
-		while (!check_charset(str[d], sep) && str[d])
-		{
-			char_count++;
-			d++;
-		}
-		output[i] = (char *)malloc(sizeof(char) * (char_count + 1));
-		if (output[i] != NULL)
-			output[i][char_count] = '\0';
-		i++;
+		char_count++;
+		d++;
 	}
+	temp = (char *)malloc(sizeof(char) * (char_count + 1));
+	temp[char_count] = '\0';
+	i = 0;
+	while (i < char_count)
+	{
+		temp[i] = str[d];
+		i++;
+		d++;
+	}
+	*output = temp;
 }
 
-void	store_str(char *str, char *sep, char **output)
+void	make_strs(char *str, char *sep, int *word_count, char ***output)
 {
 	int		i;
-	int		d;
-	int		char_count;
-
-	d = 0;
-	i = 0;
-	while (output[i])
-	{
-		while (check_charset(str[d], sep))
-			d++;
-		char_count = 0;
-		while (!check_charset(str[d], sep) && str[d])
-		{
-			output[i][char_count] = str[d];
-			char_count++;
-			d++;
-		}
-		output[i][char_count] = '\0';
-		i++;
-	}
-}
-
-char	**make_strs(char *str, char *sep)
-{
-	int		i;
-	int		word_count;
 	int		flag;
-	char	**output;
+	char	**temp;
 
-	word_count = 0;
+	*word_count = 0;
 	flag = 0;
 	if (str)
 	{
@@ -97,39 +95,47 @@ char	**make_strs(char *str, char *sep)
 			else if (flag == 0)
 			{
 				flag = 1;
-				word_count++;
+				(*word_count)++;
 			}
 		}
 	}
-	output = (char **)malloc(sizeof(char *) * (word_count + 1));
-	if (output != NULL)
-		output[word_count] = NULL;
-	return (output);
+	temp = (char **)malloc(sizeof(char *) * (*word_count + 1));
+	temp[*word_count] = NULL;
+	*output = temp;
 }
 
 char	**ft_split(char *str, char *charset)
 {
+	int		i;
+	int		word_count;
 	char	**output;
 
-	output = NULL;
-	output = make_strs(str, charset);
-	if (output != NULL)
+	if (!str || !*str)
 	{
-		make_str(str, charset, output);
-		store_str(str, charset, output);
+		output = (char **)malloc(sizeof(char *) * 1);
+		output[0] = NULL;
+	}
+	else if (!charset || !*charset)
+	{
+		output = (char **)malloc(sizeof(char *) * 2);
+		output[0] = str_dup(str);
+		output[1] = NULL;
+	}
+	else
+	{
+		make_strs(str, charset, &word_count, &output);
+		i = -1;
+		while (++i < word_count)
+			make_str(str, charset, &output[i]);
 	}
 	return (output);
 }
 
 // #include <stdio.h>
 // int main(){
-// 	char **r = ft_split(NULL, "l");
+// 	char **r = ft_split("he", NULL);
 // 	int i = 0;
 // 	while (r[i])
 // 		printf("%s\n", r[i++]);
 // 	printf("%s\n", r[i]);
-// 	i = 0;
-// 	while (r[i])
-// 		free(r[i++]);
-// 	free(r);
 // }
