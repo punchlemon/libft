@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:02:29 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/30 08:39:46 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/31 00:56:14 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ void	calculate(int *num, char *str, char *base, int base_len)
 
 void	check_digit(int num, int base_len, int *i)
 {
-	(*i)++;
 	num /= base_len;
 	if (num)
 	{
+		(*i)++;
 		if (num < 0)
 		{
 			(*i)++;

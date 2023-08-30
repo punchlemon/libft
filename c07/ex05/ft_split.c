@@ -6,11 +6,12 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 16:21:58 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/30 21:32:36 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/31 01:06:00 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 char	*ft_strdup(char *src)
 {
@@ -56,10 +57,12 @@ int	make_str(char *str, char *sep, char **output, int d)
 	int		i;
 	int		char_count;
 	char	*temp;
+	int		word_start;
 
 	while (str[d] && check_charset(str[d], sep))
 		d++;
 	char_count = 0;
+	word_start = d;
 	while (str[d] && !check_charset(str[d], sep))
 	{
 		char_count++;
@@ -70,9 +73,8 @@ int	make_str(char *str, char *sep, char **output, int d)
 	i = 0;
 	while (i < char_count)
 	{
-		temp[i] = str[d];
+		temp[i] = str[word_start + i];
 		i++;
-		d++;
 	}
 	*output = temp;
 	return (d);
@@ -134,12 +136,12 @@ char	**ft_split(char *str, char *charset)
 	return (output);
 }
 
-// #include <stdio.h>
-// #include <unistd.h>
-// int main(){
-// 	char **r = ft_split("hefjaieahafhaeijhfah", "h");
-// 	int i = 0;
-// 	while (r[i])
-// 		printf("%s\n", r[i++]);
-// 	printf("%s\n", r[i]);
-// }
+#include <stdio.h>
+#include <unistd.h>
+int main(){
+	char **r = ft_split("hefjaieahafhaeijhfah", "h");
+	int i = 0;
+	while (r[i])
+		printf("%s\n", r[i++]);
+	printf("%s\n", r[i]);
+}

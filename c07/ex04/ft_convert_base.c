@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:02:07 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/30 08:43:31 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/31 01:00:20 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_itoa_base(int num, char *base, int base_len)
 	output = NULL;
 	if (base_len)
 	{
-		i = 0;
+		i = 1;
 		check_digit(num, base_len, &i);
 		output = (char *)malloc(sizeof(char) * (i + 1));
 		if (output != NULL)
@@ -85,26 +85,26 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	}
 	return (str);
 }
-#include <stdio.h>
-int main() {
-	char *base_from = "0123456789";
-	char *base_to = "0123456789abcdef";
-	char *input = "";
-	int i = 0;
-	printf("%d : %s\n", i, ft_convert_base(input, base_from, base_to));
-	base_from = "0123456789";
-	base_to = "0123456789abcdef";
-	input = "  ---+--0002147483648";
-	i++;
-	printf("%d : %s\n", i, ft_convert_base(input, base_from, base_to));
-	base_from = "00";
-	base_to = "0123456789abcdef";
-	input = "  --2147483647";
-	i++;
-	printf("%d : %s\n", i, ft_convert_base(input, base_from, base_to));
-	base_from = "01";
-	base_to = "0123456789abcdef";
-	input = "  --+10 01";
-	i++;
-	printf("%d : %s\n", i, ft_convert_base(input, base_from, base_to));
-}
+// #include <stdio.h>
+// int main() {
+// 	char *base_from = "0123456789";
+// 	char *base_to = "0123456789";
+// 	char *input = "-9000";
+// 	int i = 0;
+// 	printf("%d : %s\n", i, ft_convert_base(input, base_from, base_to));
+// 	base_from = "0123456789";
+// 	base_to = "0123456789abcdef";
+// 	input = "  ---+-0002147483648";
+// 	i++;
+// 	printf("%d : %s\n", i, ft_convert_base(input, base_from, base_to));
+// 	base_from = "0123456789";
+// 	base_to = "0123456789abcdef";
+// 	input = "  --2147483647";
+// 	i++;
+// 	printf("%d : %s\n", i, ft_convert_base(input, base_from, base_to));
+// 	base_from = "01";
+// 	base_to = "0123456789abcdef";
+// 	input = "  --+10";
+// 	i++;
+// 	printf("%d : %s\n", i, ft_convert_base(input, base_from, base_to));
+// }
