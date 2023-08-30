@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 15:41:07 by akyoshid          #+#    #+#             */
-/*   Updated: 2023/08/30 23:10:14 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/30 23:14:21 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int		ft_check_newline_character(char *str);
 
 //ft_split.c
 char	**ft_split(char *str, char *charset);
+char	*ft_strdup_sp(char *src, int start, int end);
 
 //ft_check_map2.c
 int		ft_check_map(char **str);
