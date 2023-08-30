@@ -2,7 +2,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 NAME = bsq
-SRCS = #file
+SRCS = ft_check_map.c ft_check_map2.c ft_map_to_input.c ft_others.c ft_print_map.c ft_read.c ft_solve.c ft_split.c main.c
 OBJS = ${SRCS:.c=.o}
 HEADER = ft_bsq.h
 
