@@ -6,9 +6,11 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:31:37 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/30 23:09:42 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/30 23:13:25 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_bsq.h"
 
 int	ft_map_to_kouzou(char **strs, t_input *kouzou)
 {

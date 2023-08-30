@@ -6,13 +6,13 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:53:04 by akyoshid          #+#    #+#             */
-/*   Updated: 2023/08/30 23:11:07 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/30 23:12:40 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_bsq.h"
 
-int	ft_check_null(char **str)
+int	ft_check_null(char **str) 
 {
 	if (str[0] == NULL || str[1] == NULL)
 		return (1);
