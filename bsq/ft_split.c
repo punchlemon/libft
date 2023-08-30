@@ -86,7 +86,6 @@ char	**ft_split(char *str, char *charset)
 	temp = (char **)malloc(sizeof(char *) * (ft_word_count(str, charset) + 1));
 	if (temp == NULL)
 		return (NULL);
-	temp[ft_word_count(str, charset)] = 0;
 	if (ft_word_count(str, charset) == 0)
 		return (temp);
 	i = 0;
@@ -99,6 +98,7 @@ char	**ft_split(char *str, char *charset)
 			return (NULL);
 		j++;
 	}
+	temp[ft_word_count(str, charset)] = 0;
 	return (temp);
 }
 
@@ -112,8 +112,6 @@ char	**ft_split(char *str, char *charset)
 // 	int		i;
 
 // 	p = ft_split(test_str, test_charset);
-// 	if (p == NULL)
-// 		return (-1);
 // 	i = 0;
 // 	while (p[i] != 0)
 // 	{

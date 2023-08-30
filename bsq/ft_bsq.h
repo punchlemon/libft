@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 15:41:07 by akyoshid          #+#    #+#             */
-/*   Updated: 2023/08/30 21:57:49 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/30 22:00:46 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ char	*ft_read_input(int fd, int buff_size);
 
 //check_strs.c
 
-//solve.c
+//ft_solve.c
 void	ft_solve(t_input *in);
+
+//ft_print_map.c
+void	ft_print_map(t_input kouzou);
 
 //others
 int		ft_strlen(char *str);
