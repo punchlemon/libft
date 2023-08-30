@@ -6,13 +6,13 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:53:04 by akyoshid          #+#    #+#             */
-/*   Updated: 2023/08/30 23:12:40 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/30 23:33:21 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_bsq.h"
 
-int	ft_check_null(char **str) 
+int	ft_check_null(char **str)
 {
 	if (str[0] == NULL || str[1] == NULL)
 		return (1);
@@ -97,6 +97,8 @@ int	ft_check_map(char **str)
 	int	num_len;
 	int	num_of_line;
 
+	if (ft_check_null(str))
+		return (1);
 	num_len = ft_strlen(str[0]) - 3;
 	if (ft_check_first_line(str[0], num_len))
 		return (1);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solve.c                                            :+:      :+:    :+:   */
+/*   ft_solve.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 11:58:33 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/30 21:57:27 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/30 23:29:38 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	ft_fill_in_map(t_input *in, t_pos *max)
 	}
 }
 
-void	ft_solve(t_input *in)
+int	ft_solve(t_input *in)
 {
 	int		**m;
 	t_pos	max;
@@ -116,7 +116,9 @@ void	ft_solve(t_input *in)
 		ft_init_int_map(in, m);
 		ft_calc_int_map(in, m, &max);
 		ft_fill_in_map(in, &max);
+		return (0);
 	}
+	return (1);
 }
 
 // #include <stdio.h>

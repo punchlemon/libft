@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   ft_check_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 19:40:05 by akyoshid          #+#    #+#             */
-/*   Updated: 2023/08/30 22:53:16 by akyoshid         ###   ########.fr       */
+/*   Updated: 2023/08/30 23:25:47 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_check_newline_character(char *str)
 {
 	int	i;
 
-	if (str[0] != '\n')
+	if (str[0] == '\n')
 		return (1);
 	i = 1;
 	while (str[i] != '\0')

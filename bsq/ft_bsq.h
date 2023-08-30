@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 15:41:07 by akyoshid          #+#    #+#             */
-/*   Updated: 2023/08/30 23:14:21 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/30 23:29:30 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		ft_check_map(char **str);
 int		ft_map_to_kouzou(char **strs, t_input *kouzou);
 
 //ft_solve.c
-void	ft_solve(t_input *in);
+int		ft_solve(t_input *in);
 
 //ft_print_map.c
 void	ft_print_map(t_input kouzou);
