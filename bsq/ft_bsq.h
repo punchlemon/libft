@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 15:41:07 by akyoshid          #+#    #+#             */
-/*   Updated: 2023/08/30 22:00:46 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/30 23:05:28 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,11 @@ typedef struct s_pos	t_pos;
 //read.c
 char	*ft_read_input(int fd, int buff_size);
 
-//check_strs.c
+//check_map.c
+int		ft_check_newline_character(char *str);
+
+//check_map2.c
+int		ft_check_map(char **str);
 
 //ft_solve.c
 void	ft_solve(t_input *in);

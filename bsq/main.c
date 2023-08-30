@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 17:11:47 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/30 22:51:12 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/30 23:04:32 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,13 @@ int	ft_all(int fd)
 
 	if (ft_read_input(&input, 1024) == 1)
 		return (1);
-	if (check_strs(input, &strs) == 1)
+	if (ft_check_newline_character(char *str) == 1)
+		return (1);
+	if (ft_split(str, "\n") == NULL)
+		return (1);
+	else
+		strs = ft_split(str, "\n");
+	if (ft_check_map(input) == 1)
 		return (1);
 	if (ft_map_to_kouzou(strs, &kouzou) == 1)
 		return (1);
