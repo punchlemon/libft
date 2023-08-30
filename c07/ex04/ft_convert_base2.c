@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:02:29 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/29 12:07:30 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/30 08:39:46 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int	check_base(char *base)
 	{
 		while (base[i])
 		{
-			if (base[i] == '-' || base[i] == '+')
+			if (base[i] == '-' || base[i] == '+'
+				|| base[i] == '\t' || base[i] == '\n' || base[i] == '\v'
+				|| base[i] == '\f' || base[i] == '\r' || base[i] == ' ')
 				return (0);
 			j = 0;
 			while (j < i)
