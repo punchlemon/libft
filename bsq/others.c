@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   others.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 19:35:20 by akyoshid          #+#    #+#             */
-/*   Updated: 2023/08/30 21:21:58 by akyoshid         ###   ########.fr       */
+/*   Updated: 2023/08/30 21:49:53 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,17 @@ void	ft_putstr(char *str)
 		write(1, &str[i], 1);
 		i++;
 	}
+}
+
+int	min(int a, int b, int c)
+{
+	int		output;
+
+	if (a < b)
+		output = a;
+	else
+		output = b;
+	if (c < output)
+		output = c;
+	return (output);
 }

@@ -6,13 +6,13 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 20:22:18 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/30 21:09:14 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/30 21:41:10 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_bsq.h"
 
-char	*con_strs(char *str1, char *str2)
+char	*ft_concat_strs(char *str1, char *str2)
 {
 	int		len1;
 	int		len2;
@@ -39,7 +39,7 @@ char	*con_strs(char *str1, char *str2)
 	return (result);
 }
 
-char	*read_input(int fd, int buff_size)
+char	*ft_read_input(int fd, int buff_size)
 {
 	int		ret;
 	char	*input;
@@ -54,7 +54,7 @@ char	*read_input(int fd, int buff_size)
 		ret = read(fd, temp, buff_size);
 		if (ret < 0)
 			break ;
-		input = con_strs(input, temp);
+		input = ft_concat_strs(input, temp);
 		if (input == NULL)
 			return (NULL);
 	}
