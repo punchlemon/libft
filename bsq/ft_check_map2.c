@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map2.c                                       :+:      :+:    :+:   */
+/*   ft_check_map2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:53:04 by akyoshid          #+#    #+#             */
-/*   Updated: 2023/08/30 22:54:40 by akyoshid         ###   ########.fr       */
+/*   Updated: 2023/08/30 23:11:07 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_check_first_line(char *str, int num_len)
 			return (1);
 		i++;
 	}
-	if (str[i] == str[i + 1] || str[i + 1] == str[i + 2] 
+	if (str[i] == str[i + 1] || str[i + 1] == str[i + 2]
 		|| str[i + 2] == str[i])
 		return (1);
 	while (str[i] != '\0')

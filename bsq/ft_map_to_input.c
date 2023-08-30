@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 22:31:37 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/30 22:50:33 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/30 23:09:42 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_map_to_kouzou(char **strs, t_input *kouzou)
 		return (1);
 	i = -1;
 	while (++i < kouzou->col)
-		temp[i] = ft_strdup_sp(strs[i])
+		temp[i] = ft_strdup_sp(strs[i]);
 	kouzou->map = temp;
 	return (0);
 }
