@@ -1,54 +1,67 @@
-#include <unistd.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/30 20:22:18 by retanaka          #+#    #+#             */
+/*   Updated: 2023/08/30 21:09:14 by retanaka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char *extend_and_copy(char *old_buffer, int old_size, int new_size)
+#include "ft_bsq.h"
+
+char	*con_strs(char *str1, char *str2)
 {
-	char *new_buffer = (char *)malloc(new_size);
-	if (new_buffer == NULL)
-	{
-		return NULL;
-	}
-	
-	int i = 0;
-	while (i < old_size)
-	{
-		new_buffer[i] = old_buffer[i];
-		i++;
-	}
-	
-	free(old_buffer);
-	return new_buffer;
+	int		len1;
+	int		len2;
+	char	*result;
+
+	if (str1 == NULL)
+		str1 = "";
+	if (str2 == NULL)
+		str2 = "";
+	len1 = strlen(str1);
+	len2 = strlen(str2);
+	result = (char *)malloc(len1 + len2 + 1);
+	if (result == NULL)
+		return (NULL);
+	i = -1;
+	while (++i < len1)
+		result[i] = str1[i];
+	i = -1;
+	while (++i < len2)
+		result[len1 + i] = str2[i];
+	result[len1 + len2] = '\0';
+	free(str1);
+	free(str2);
+	return (result);
 }
 
-char *read_input(int fd, int buffer_size)
+char	*read_input(int fd, int buff_size)
 {
-	int ret;
-	int index = 0;
-	char *input_buffer;
-	char tmp;
-	
-	input_buffer = (char *)malloc(buffer_size);
-	if (input_buffer == NULL)
-		return NULL;
-	while ((ret = read(STDIN_FILENO, &tmp, 1)) > 0)
+	int		ret;
+	char	*input;
+	char	*temp;
+
+	temp = NULL;
+	while (ret > 0)
 	{
-		if (tmp == '\n')
-			break;
-		input_buffer[index] = tmp;
-		index++;
-		if (index >= buffer_size)
-		{
-			buffer_size *= 2;
-			input_buffer = extend_and_copy(input_buffer, index, buffer_size);
-			if (input_buffer == NULL)
-				return NULL;
-		}
+		temp = (char *)malloc(buff_size);
+		if (temp == NULL)
+			return (NULL);
+		ret = read(fd, temp, buff_size);
+		if (ret < 0)
+			break ;
+		input = con_strs(input, temp);
+		if (input == NULL)
+			return (NULL);
 	}
 	if (ret < 0)
 	{
-		free(input_buffer);
-		return NULL;
+		free(input);
+		return (NULL);
 	}
-	input_buffer[index] = '\0';
-	return input_buffer;
+	return (input);
 }
