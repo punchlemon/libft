@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 16:21:58 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/31 01:06:00 by retanaka         ###   ########.fr       */
+/*   Updated: 2023/08/31 01:08:51 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,12 +136,12 @@ char	**ft_split(char *str, char *charset)
 	return (output);
 }
 
-#include <stdio.h>
-#include <unistd.h>
-int main(){
-	char **r = ft_split("hefjaieahafhaeijhfah", "h");
-	int i = 0;
-	while (r[i])
-		printf("%s\n", r[i++]);
-	printf("%s\n", r[i]);
-}
+// #include <stdio.h>
+// #include <unistd.h>
+// int main(){
+// 	char **r = ft_split("hefjaieahafhaeijhfah", "h");
+// 	int i = 0;
+// 	while (r[i])
+// 		printf("%s\n", r[i++]);
+// 	printf("%s\n", r[i]);
+// }
