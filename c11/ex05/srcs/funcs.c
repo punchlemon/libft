@@ -1,44 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   funcs.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/14 18:21:40 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/31 13:02:19 by retanaka         ###   ########.fr       */
+/*   Created: 2023/08/31 10:24:19 by retanaka          #+#    #+#             */
+/*   Updated: 2023/08/31 11:52:25 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <unistd.h>
 
-int	ft_strcmp(char *s1, char *s2)
+void	ft_putnbr(int nb);
+
+void	add(int a, int b)
 {
-	while (*s1)
-	{
-		if (!*s2)
-			return (0);
-		if (*s1 != *s2)
-			break ;
-		s1++;
-		s2++;
-	}
-	return (*s1 - *s2);
+	ft_putnbr(a + b);
 }
 
-char	*ft_strstr(char *str, char *to_find)
+void	sub(int a, int b)
 {
-	while (*str)
-	{
-		if (ft_strcmp(str, to_find) == 0)
-			return (str);
-		else
-			str++;
-	}
-	return ((void *)0);
+	ft_putnbr(a - b);
 }
 
-#include <stdio.h>
-#include <string.h>
-int main(){
-	printf("%s", strstr("hello", "ll"));
+void	duv(int a, int b)
+{
+	if (b == 0)
+		write(1, "Stop : division by zero", 23);
+	else
+		ft_putnbr(a / b);
+}
+
+void	mul(int a, int b)
+{
+	ft_putnbr(a * b);
+}
+
+void	mod(int a, int b)
+{
+	if (b == 0)
+		write(1, "Stop : modulo by zero", 21);
+	else
+		ft_putnbr(a % b);
 }

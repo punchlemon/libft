@@ -1,44 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/14 18:21:40 by retanaka          #+#    #+#             */
-/*   Updated: 2023/08/31 13:02:19 by retanaka         ###   ########.fr       */
+/*   Created: 2023/08/31 10:29:11 by retanaka          #+#    #+#             */
+/*   Updated: 2023/08/31 11:51:35 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 
-int	ft_strcmp(char *s1, char *s2)
+void	ft_putnbr(int nb)
 {
-	while (*s1)
-	{
-		if (!*s2)
-			return (0);
-		if (*s1 != *s2)
-			break ;
-		s1++;
-		s2++;
-	}
-	return (*s1 - *s2);
-}
+	long long	num;
+	char		c;
 
-char	*ft_strstr(char *str, char *to_find)
-{
-	while (*str)
+	num = nb;
+	if (num == -2147483648)
+		write(1, "-2147483648", 11);
+	else
 	{
-		if (ft_strcmp(str, to_find) == 0)
-			return (str);
+		if (num < 0)
+		{
+			write(1, "-", 1);
+			num = -num;
+			ft_putnbr((int)num);
+		}
+		else if (num == 0)
+			write(1, "0", 1);
 		else
-			str++;
+		{
+			c = num % 10 + '0';
+			if (num / 10 != 0)
+				ft_putnbr((int)(num / 10));
+			write(1, &c, 1);
+		}
 	}
-	return ((void *)0);
-}
-
-#include <stdio.h>
-#include <string.h>
-int main(){
-	printf("%s", strstr("hello", "ll"));
 }
