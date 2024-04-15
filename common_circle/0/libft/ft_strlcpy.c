@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42.tokyo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 07:27:49 by retanaka          #+#    #+#             */
-/*   Updated: 2023/10/11 06:41:00 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/01 11:39:52 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
-	int	srclen;
+	size_t	i;
+	size_t	srclen;
 
 	i = 0;
 	srclen = ft_strlen(src);
@@ -26,10 +26,4 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	}
 	dst[i] = 0;
 	return (i);
-}
-
-
-#include <string.h>
-int main(){
-	strlcpy("hello", "world", 0);
 }

@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42.tokyo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 08:25:15 by retanaka          #+#    #+#             */
-/*   Updated: 2023/10/10 07:59:39 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/01 13:07:26 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,3 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
-
-// #include <stdio.h>
-// int main(){
-// 	printf("%zu\n", strlen(""));
-// }

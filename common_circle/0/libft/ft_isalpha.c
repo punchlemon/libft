@@ -6,13 +6,13 @@
 /*   By: retanaka <retanaka@student.42.tokyo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:59:19 by retanaka          #+#    #+#             */
-/*   Updated: 2023/10/11 06:40:10 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/01 12:18:51 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+int	ft_isupper(int c)
 {
 	return ('A' <= c && c <= 'Z');
 }
@@ -24,5 +24,5 @@ int	ft_islower(int c)
 
 int	ft_isalpha(int c)
 {
-	return (ft_isalpha(c) || ft_islower(c));
+	return (ft_isupper(c) || ft_islower(c));
 }

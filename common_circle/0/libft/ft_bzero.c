@@ -6,15 +6,15 @@
 /*   By: retanaka <retanaka@student.42.tokyo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 07:08:23 by retanaka          #+#    #+#             */
-/*   Updated: 2023/10/11 07:04:15 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/02 05:39:39 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t len)
+void	ft_bzero(void *s, size_t n)
 {
-	ft_memset(s, 0, len);
+	ft_memset(s, 0, n);
 }
 
 // #include <stdio.h>
