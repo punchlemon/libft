@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: retanaka <retanaka@student.42.tokyo>       +#+  +:+       +#+        */
+/*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 07:59:19 by retanaka          #+#    #+#             */
-/*   Updated: 2024/04/01 12:18:51 by retanaka         ###   ########.fr       */
+/*   Created: 2024/04/16 12:58:08 by retanaka          #+#    #+#             */
+/*   Updated: 2024/04/16 13:01:05 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
