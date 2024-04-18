@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 02:23:02 by retanaka          #+#    #+#             */
-/*   Updated: 2024/04/19 03:10:23 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/19 06:35:46 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (s2_len--)
 		p[s1_len + s2_len] = s2[s2_len];
 	while (s1_len--)
-		p[s1_len] = s2[s1_len];
+		p[s1_len] = s1[s1_len];
 	return (p);
 }
