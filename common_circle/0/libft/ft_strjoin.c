@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 02:23:02 by retanaka          #+#    #+#             */
-/*   Updated: 2024/04/19 06:35:46 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/19 06:37:38 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (s2 == NULL)
 		s2_len = 0;
 	else
-		s2_len = ft_strlen(s2);	
+		s2_len = ft_strlen(s2);
 	total = s1_len + s2_len + 1;
 	p = (char *)malloc(total * sizeof(char));
 	if (p == NULL)
