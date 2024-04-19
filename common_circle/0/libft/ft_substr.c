@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 16:53:47 by retanaka          #+#    #+#             */
-/*   Updated: 2024/04/18 13:11:18 by retanaka         ###   ########.fr       */
+/*   Created: 2024/04/18 15:48:18 by retanaka          #+#    #+#             */
+/*   Updated: 2024/04/19 06:56:04 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	needle_len;
+	size_t	s_len;
+	char	*p;
+	size_t	i;
 
-	if (haystack == NULL)
+	if (s == NULL)
 		return (NULL);
-	needle_len = ft_strlen(needle);
-	if (needle_len == 0)
-		return ((char *)haystack);
-	while (*haystack != '\0' && needle_len <= len)
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+		s_len = 0;
+	else
+		s_len = s_len - start;
+	if (s_len > len)
+		s_len = len;
+	p = (char *)malloc((s_len + 1) * sizeof(char));
+	if (p == NULL)
+		return (NULL);
+	i = 0;
+	while (i < s_len)
 	{
-		if (ft_strncmp(haystack, needle, needle_len) == 0)
-			return ((char *)haystack);
-		haystack++;
-		len--;
+		p[i] = s[i + start];
+		i++;
 	}
-	return (NULL);
+	p[i] = '\0';
+	return (p);
 }

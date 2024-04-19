@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 14:53:31 by retanaka          #+#    #+#             */
-/*   Updated: 2024/04/15 15:18:00 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/18 11:31:47 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_tolower(int c)
 {
-	if (ft_isalpha(c))
+	if (ft_isupper(c))
 		return (c + 'a' - 'A');
-	return (0);
+	return (c);
 }
