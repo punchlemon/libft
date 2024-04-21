@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42.tokyo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 07:15:10 by retanaka          #+#    #+#             */
-/*   Updated: 2024/04/18 10:37:52 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/21 08:11:43 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 	char	*s;
 	char	*d;
 
+	if (dst == NULL || src == NULL)
+		return (dst);
 	d = (char *)dst;
 	s = (char *)src;
 	i = 0;
@@ -27,7 +29,7 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 	end = n;
 	if (s <= d)
 	{
-		i = n;
+		i = n - 1;
 		dif = -1;
 		end = -1;
 	}

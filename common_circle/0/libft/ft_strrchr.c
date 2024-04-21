@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 15:29:32 by retanaka          #+#    #+#             */
-/*   Updated: 2024/04/18 12:08:51 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/21 08:21:45 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
+	if (c == '\0')
+		return ((char *)(s + ft_strlen(s)));
 	s += ft_strlen(s) - 1;
 	while (*s != '\0')
 	{

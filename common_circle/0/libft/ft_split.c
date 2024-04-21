@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 07:23:39 by retanaka          #+#    #+#             */
-/*   Updated: 2024/04/19 10:55:57 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/21 12:30:14 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ size_t	ft_split_count(char const *s1, char c)
 	int		tf;
 	size_t	count;
 
+	if (s1[0] == '\0')
+		return (0);
 	if (c == '\0')
 		return (1);
 	count = 0;
@@ -52,7 +54,7 @@ char	*ft_set_str(char const *s, char c, size_t *index)
 	if (p == NULL)
 		return (NULL);
 	i = 0;
-	while (i < total)
+	while (i < total && s[i + start] != '\0')
 	{
 		p[i] = s[i + start];
 		i++;
