@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 08:03:59 by retanaka          #+#    #+#             */
-/*   Updated: 2024/04/23 09:07:54 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/23 10:20:12 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,3 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(n, fd);
 	write (fd, &ones_place, 1);
 }
-
