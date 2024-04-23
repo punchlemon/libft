@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:48:18 by retanaka          #+#    #+#             */
-/*   Updated: 2024/04/19 06:56:04 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/23 08:24:22 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	s_len;
 	char	*p;
-	size_t	i;
 
 	if (s == NULL)
 		return (NULL);
@@ -30,12 +29,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	p = (char *)malloc((s_len + 1) * sizeof(char));
 	if (p == NULL)
 		return (NULL);
-	i = 0;
-	while (i < s_len)
-	{
-		p[i] = s[i + start];
-		i++;
-	}
-	p[i] = '\0';
+	ft_strlcpy(p, s + start, s_len + 1);
 	return (p);
 }

@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 07:56:10 by retanaka          #+#    #+#             */
-/*   Updated: 2024/04/20 07:58:58 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/23 08:24:45 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	s_len;
-
-	if (s == NULL || ft_strlen(s) == 0)
+	if (s == NULL)
 		return ;
-	s_len = ft_strlen(s);
-	write(fd, s, s_len);
+	while (*s != '\0')
+	{
+		write(fd, s, 1);
+		s++;
+	}
 }

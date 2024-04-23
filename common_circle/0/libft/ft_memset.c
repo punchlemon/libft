@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 11:38:06 by retanaka          #+#    #+#             */
-/*   Updated: 2024/04/18 15:25:50 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/23 07:31:45 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memset(void *b, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		p[i] = c;
+		p[i] = (char)c;
 		i++;
 	}
 	return (b);

@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:09:34 by retanaka          #+#    #+#             */
-/*   Updated: 2024/04/22 08:42:08 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/23 08:26:14 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	total;
-	
-	void	*p;
+	void	*ptr;
 
-	if (SIZE_MAX / count < size)
+	if (count == 0 || size == 0)
+	{
+		count = 1;
+		size = 1;
+	}
+	if (count > SIZE_MAX / size)
 		return (NULL);
-	total = count * size;
-	p = malloc(total);
-	if (p == NULL)
-		return (NULL);
-	ft_bzero(p, total);
-	return (p);
+	ptr = malloc(count * size);
+	if (ptr != NULL)
+		ft_bzero(ptr, count * size);
+	return (ptr);
 }

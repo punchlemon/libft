@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:16:25 by retanaka          #+#    #+#             */
-/*   Updated: 2024/04/22 10:35:55 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/23 07:26:28 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	char	*d;
 	char	*s;
 
-	if (dst == NULL || src == NULL)
-		return (dst);
+	if (dst == NULL && src == NULL)
+		return (NULL);
 	d = (char *)dst;
 	s = (char *)src;
 	i = 0;

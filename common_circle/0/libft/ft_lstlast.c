@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:28:41 by retanaka          #+#    #+#             */
-/*   Updated: 2024/04/22 12:36:54 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/23 06:54:34 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*p;
-
-	p = lst;
-	if (p == NULL)
+	if (lst == NULL)
 		return (NULL);
-	while (p -> next != NULL)
-		p = p -> next;
-	return (p);
+	while (lst -> next != NULL)
+		lst = lst -> next;
+	return (lst);
 }

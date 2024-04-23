@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:24:11 by retanaka          #+#    #+#             */
-/*   Updated: 2024/04/22 12:55:25 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/23 07:05:43 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,11 @@
 int	ft_lstsize(t_list *lst)
 {
 	int		i;
-	t_list	*p;
 
-	p = lst;
-	if (p == NULL)
-		return (0);
 	i = 0;
-	while (p != NULL)
+	while (lst != NULL)
 	{
-		p = p -> next;
+		lst = lst -> next;
 		i++;
 	}
 	return (i);

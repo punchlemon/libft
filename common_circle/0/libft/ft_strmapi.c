@@ -6,7 +6,7 @@
 /*   By: retanaka <retanaka@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 04:39:36 by retanaka          #+#    #+#             */
-/*   Updated: 2024/04/20 06:44:39 by retanaka         ###   ########.fr       */
+/*   Updated: 2024/04/23 08:06:52 by retanaka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = 0;
 	while (i < s_len)
 	{
-		p[i] = f(i, s[i]);
+		p[i] = (*f)(i, s[i]);
 		i++;
 	}
 	return (p);
