@@ -29,6 +29,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	p = (char *)malloc((s_len + 1) * sizeof(char));
 	if (p == NULL)
 		return (NULL);
-	ft_strlcpy(p, s + start, s_len + 1);
+	if (s_len == 0)
+		p[0] = '\0';
+	else
+		ft_strlcpy(p, s + start, s_len + 1);
 	return (p);
 }
