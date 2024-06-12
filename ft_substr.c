@@ -26,12 +26,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		s_len = s_len - start;
 	if (s_len > len)
 		s_len = len;
-	p = (char *)malloc((s_len + 1) * sizeof(char));
+	p = (char *)ft_calloc((s_len + 1), sizeof(char));
 	if (p == NULL)
 		return (NULL);
-	if (s_len == 0)
-		p[0] = '\0';
-	else
+	if (s_len > 0)
 		ft_strlcpy(p, s + start, s_len + 1);
 	return (p);
 }

@@ -12,16 +12,15 @@
 
 #include "libft.h"
 
-static char	**ft_freemem(char ***p, int last_index)
+static char	**ft_freemem(char ***p, size_t last_index)
 {
-	int	i;
+	size_t	i;
 
-	i = 0;
-	while (i < last_index)
+	i = -1;
+	while (++i < last_index)
 	{
-		free((*p)[i]);
-		(*p)[i] = NULL;
-		i++;
+		free(*(char **)((*p) + i));
+		*(char **)((*p) + i) = NULL;
 	}
 	free(*p);
 	*p = NULL;
@@ -30,16 +29,16 @@ static char	**ft_freemem(char ***p, int last_index)
 
 static int	ft_countword(char const *s, char c)
 {
-	int	count;
+	size_t	count;
 
 	count = 0;
-	while (*s != '\0')
+	while (*s)
 	{
-		while (*s != '\0' && *s == c)
+		while (*s && *s == c)
 			s++;
-		if (*s != '\0')
+		if (*s)
 			count++;
-		while (*s != '\0' && *s != c)
+		while (*s && *s != c)
 			s++;
 	}
 	return (count);
@@ -48,7 +47,7 @@ static int	ft_countword(char const *s, char c)
 static char	*ft_storeword(char const **s, char c)
 {
 	char	*temp;
-	int		len;
+	size_t	len;
 
 	len = 0;
 	while (**s != '\0' && **s != c)
@@ -57,30 +56,27 @@ static char	*ft_storeword(char const **s, char c)
 		(*s)++;
 	}
 	temp = malloc((len + 1) * sizeof(char));
-	if (temp == NULL)
-		return (NULL);
-	ft_strlcpy(temp, *s - len, len + 1);
+	if (temp != NULL)
+		ft_strlcpy(temp, *s - len, len + 1);
 	return (temp);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**buff;
-	int		wordcount;
-	int		i;
+	size_t	i;
 
 	if (s == NULL)
 		return (NULL);
-	wordcount = ft_countword(s, c);
-	buff = malloc((wordcount + 1) * sizeof(char *));
+	buff = malloc((ft_countword(s, c) + 1) * sizeof(char *));
 	if (buff == NULL)
 		return (NULL);
 	i = 0;
-	while (*s != '\0')
+	while (*s)
 	{
-		while (*s != '\0' && *s == c)
+		while (*s && *s == c)
 			s++;
-		if (*s != '\0')
+		if (*s)
 		{
 			buff[i] = ft_storeword(&s, c);
 			if (buff[i] == NULL)
@@ -88,6 +84,6 @@ char	**ft_split(char const *s, char c)
 			i++;
 		}
 	}
-	buff[i] = NULL;
+	*(char **)(buff + i) = NULL;
 	return (buff);
 }

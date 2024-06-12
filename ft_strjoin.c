@@ -20,13 +20,19 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
+	s1_len = -1;
+	while (*(s1 + ++s1_len))
+		;
+	s2_len = -1;
+	while (*(s2 + ++s2_len))
+		;
 	p = (char *)malloc((s1_len + s2_len + 1) * sizeof(char));
 	if (p == NULL)
 		return (NULL);
-	ft_memcpy(p, s1, s1_len);
-	ft_memcpy(p + s1_len, s2, s2_len);
-	p[s1_len + s2_len] = '\0';
+	*(p + s1_len + s2_len) = 0;
+	while (s2_len--)
+		*(char *)(p + s1_len + s2_len) = *(char *)(s2 + s2_len);
+	while (s1_len--)
+		*(char *)(p + s1_len) = *(char *)(s1 + s1_len);
 	return (p);
 }
