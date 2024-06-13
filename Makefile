@@ -210,13 +210,13 @@ PROGRESS_BAR_LENGTH				=	40
 
 define compile
 	$(eval COMPILED_OBJS_LEN=$(shell echo $$(($(COMPILED_OBJS_LEN)+1))))
-	@$(call update_progress,$(COMPILED_OBJS_LEN),$(OBJS_LEN), "Libft\ Compiling\ \ \ \ \ \ \ ")
+	@$(call update_progress,$(COMPILED_OBJS_LEN),$(OBJS_LEN), "Libft\ Compiling")
 	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 endef
 
 define compile_bonus
 	$(eval COMPILED_BONUS_OBJS_LEN=$(shell echo $$(($(COMPILED_BONUS_OBJS_LEN)+1))))
-	@$(call update_progress,$(COMPILED_BONUS_OBJS_LEN),$(BONUS_OBJS_LEN), "Libft\ bonus\ Compiling\ ")
+	@$(call update_progress,$(COMPILED_BONUS_OBJS_LEN),$(BONUS_OBJS_LEN), "Libft\ bonus\ Compiling")
 	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 endef
 
@@ -232,7 +232,7 @@ define update_progress
 	$(eval PERCENT=$(shell echo "scale=2; 100 * $1 / $2" | bc))
 	@printf "\033[?25l" # Hide cursor
 	@printf "\r" # Move cursor to the beginning of the line
-	@printf "$(DEF_COLOR)$3|$(DEF_COLOR)"
+	@printf "$(DEF_COLOR)$3\r\033[40C|$(DEF_COLOR)"
 	@i=0; \
 	while [ $$i -lt $(BAR_LENGTH) ]; do \
 		printf "\033[42m%0.s $(DEF_COLOR)" $$i; \
@@ -249,7 +249,7 @@ endef
 all:								$(NAME)
 									@ranlib $(NAME)
 									@printf "\r"
-									@printf " Libft compiled!       \n"
+									@printf " Libft Compiled!       \n"
 									@printf "\033[?25h" # Show cursor
 
 $(NAME):							$(OBJS)
@@ -259,28 +259,27 @@ bonus:								all $(BONUS_OBJS)
 									@$(AR) $(NAME) $(BONUS_OBJS)
 									@ranlib $(NAME)
 									@printf "\r"
-									@printf " Libft bonus compiled! \n"
+									@printf " Libft bonus Compiled! \n"
 									@printf "\033[?25h" # Show cursor
 
 extend:								bonus $(EXTEND_OBJS)
 									@$(AR) $(NAME) $(EXTEND_OBJS)
 									@ranlib $(NAME)
 									@printf "\r"
-									@printf " Libft extend compiled!\n"
+									@printf " Libft extend Compiled!\n"
 									@printf "\033[?25h" # Show cursor
 
 clean:
-									@echo "$(RED)Cleaning libft objects files...$(DEF_COLOR)"
 									@$(RM) -r $(OBJ_DIR)
 									@$(RM) -r $(FLAG_DIR)
-									@echo "$(BLUE)libft objects files cleaned!$(DEF_COLOR)"
+									@echo "$(BLUE)Libft objects files Cleaned!$(DEF_COLOR)"
 
 fclean:								clean
 									@$(RM) $(NAME)
-									@echo "$(CYAN)libft executable files cleaned!$(DEF_COLOR)"
+									@echo "$(CYAN)Libft executable files Cleaned!$(DEF_COLOR)"
 
 re:									fclean all
-									@echo "$(GREEN)Cleaned and rebuilt everything for libft!$(DEF_COLOR)"
+									@echo "$(GREEN)Cleaned and Rebuilt everything for Libft!$(DEF_COLOR)"
 
 norm:
 									@norminette $(SRCS) $(INCLUDES) | grep -v Norme -B1 || true
