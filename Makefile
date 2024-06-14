@@ -13,7 +13,6 @@
 NAME							=	libft.a
 EXTEND_NAME						=	libft_extend.a
 INCLUDES_DIR					=	include/
-FLAG_DIR						=	flag/
 SRC_DIR							=	src/
 IS_DIR							=	is/
 MEM_DIR							=	mem/
@@ -56,8 +55,9 @@ IS_FILES						= 	 \
 									ft_isprint \
 
 MEM_FILES						=	 \
-									ft_memset \
 									ft_bzero \
+									ft_calloc \
+									ft_memset \
 									ft_memcpy \
 									ft_memmove \
 									ft_memchr \
@@ -271,7 +271,6 @@ extend:								bonus $(EXTEND_OBJS)
 
 clean:
 									@$(RM) -r $(OBJ_DIR)
-									@$(RM) -r $(FLAG_DIR)
 									@echo "$(BLUE)Libft objects files Cleaned!$(DEF_COLOR)"
 
 fclean:								clean
